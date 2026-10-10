@@ -21,7 +21,7 @@ const note = (title, text) => text ? `<aside class="notes"><h2>修改点</h2><se
 const shell = (title, content, noteTitle, noteText) => `<div class="review"><aside class="sidebar"><div class="brand"><i class="brand-mark"></i>糖哨兵 · 三期</div>${nav()}</aside><section class="stage"><header class="stage-head"><h1>${title}</h1><span>多种血糖源</span></header><div class="canvas">${content}</div></section>${note(noteTitle, noteText)}</div>`;
 const phone = (content, cls = '') => `<article class="phone ${cls}"><div class="statusbar"><span>9:41</span><span>● ● ● ▰</span></div>${content}</article>`;
 const appNav = (title, back = true) => `<div class="app-nav">${back ? '<button class="back" data-page="ns" aria-label="返回">‹</button>' : ''}${title}</div>`;
-const tabs = selected => `<nav class="tabs">${[['ns','糖糖圈 NS'],['other','其他 NS'],['account','糖糖圈账号'],['auth','绑定CGM']].map(([id,name]) => `<button class="tab ${selected === id ? 'active' : ''}" data-page="${id}">${name}</button>`).join('')}</nav>`;
+const tabs = selected => `<nav class="tabs">${[['ns','糖糖圈 NS'],['other','其他 NS'],['account','糖糖圈账号'],['auth','绑定CGM']].map(([id,name]) => `<button class="tab ${selected === id ? 'active' : ''}" data-page="${id === 'ns' ? 'ns-edit' : id}">${name}</button>`).join('')}</nav>`;
 const pageSubtitle = {
   other: '已在其他渠道开通 NS，选这里',
   account: '登录糖糖圈账号',
