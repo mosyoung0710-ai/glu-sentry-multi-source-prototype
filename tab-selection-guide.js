@@ -1,9 +1,9 @@
 const tabSelectionCopy = {
-  ns: { subtitle: '输入手机号以查询NS账号', guide: '已通过糖糖圈开通 NS，选这里' },
-  'ns-edit': { subtitle: '输入手机号以查询NS账号', guide: '已通过糖糖圈开通 NS，选这里' },
-  other: { subtitle: '填写 Nightscout 地址和密钥', guide: '已在其他渠道开通 NS，选这里' },
-  account: { subtitle: '登录糖糖圈账号', guide: '已在糖糖圈绑定 CGM，选这里' },
-  auth: { subtitle: '选择需要绑定的 CGM', guide: '想直接在糖哨兵绑定 CGM，选这里' }
+  ns: { subtitle: '', guide: '已通过糖糖圈开通 NS，选这里' },
+  'ns-edit': { subtitle: '', guide: '已通过糖糖圈开通 NS，选这里' },
+  other: { subtitle: '', guide: '已在其他渠道开通 NS，选这里' },
+  account: { subtitle: '', guide: '已在糖糖圈绑定 CGM，选这里' },
+  auth: { subtitle: '', guide: '想直接在糖哨兵绑定 CGM，选这里' }
 };
 
 function renderTabSelectionGuide() {
@@ -34,8 +34,12 @@ function renderTabSelectionGuide() {
   }
 
   if (subtitle) {
-    subtitle.style.display = '';
-    if (subtitle.textContent !== copy.subtitle) subtitle.textContent = copy.subtitle;
+    if (copy.subtitle) {
+      subtitle.style.display = '';
+      if (subtitle.textContent !== copy.subtitle) subtitle.textContent = copy.subtitle;
+    } else {
+      subtitle.style.display = 'none';
+    }
   }
 
   if (!copy.guide) {

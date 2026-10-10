@@ -23,9 +23,9 @@ const phone = (content, cls = '') => `<article class="phone ${cls}"><div class="
 const appNav = (title, back = true) => `<div class="app-nav">${back ? '<button class="back" data-page="ns" aria-label="返回">‹</button>' : ''}${title}</div>`;
 const tabs = selected => `<nav class="tabs">${[['ns','糖糖圈 NS'],['other','其他 NS'],['account','糖糖圈账号'],['auth','绑定CGM']].map(([id,name]) => `<button class="tab ${selected === id ? 'active' : ''}" data-page="${id === 'ns' ? 'ns-edit' : id}">${name}</button>`).join('')}</nav>`;
 const pageSubtitle = {
-  other: '已在其他渠道开通 NS，选这里',
-  account: '登录糖糖圈账号',
-  auth: '想直接在糖哨兵绑定 CGM，选这里'
+  other: '',
+  account: '',
+  auth: ''
 };
 const sourcePage = (tab, content, subtitle = pageSubtitle[tab]) => phone(`${appNav('血糖源设置', false)}<div class="app-scroll"><h1 class="page-title">血糖源设置</h1><p class="page-subtitle">${subtitle || ''}</p>${tabs(tab)}${content}</div>`);
 
@@ -39,13 +39,13 @@ function boundCGM(name, modifyPage) {
   return phone(`${appNav('血糖源设置', false)}<div class="app-scroll"><section class="bound-ns bound-cgm"><div><h3>已绑定 CGM</h3><div class="bound-url"><span>◉</span><p>${name}</p></div><button class="text-action" data-page="${modifyPage}">修改血糖源</button></div><button class="primary">确定</button></section></div>`);
 }
 function nsEdit() {
-  return phone(`${appNav('血糖源设置')}<div class="app-scroll"><section class="ttq-ns-query"><div><h1 class="page-title">血糖源设置</h1><p class="page-subtitle">已通过糖糖圈开通 NS，输入手机号查询。</p>${tabs('ns')}<div class="query-fields"><label><span class="input-icon phone" aria-hidden="true"></span><input placeholder="请输入手机号" inputmode="numeric"></label><label><span class="input-icon verify" aria-hidden="true"></span><input placeholder="请输入验证码" inputmode="numeric"><button>获取验证码</button></label></div></div><button class="primary" data-page="ns">查询</button></section></div>`);
+  return phone(`${appNav('血糖源设置')}<div class="app-scroll"><section class="ttq-ns-query"><div><h1 class="page-title">血糖源设置</h1><p class="page-subtitle"></p>${tabs('ns')}<div class="query-fields"><p class="form-summary">输入手机号以查询NS账号</p><label><span class="input-icon phone" aria-hidden="true"></span><input placeholder="请输入手机号" inputmode="numeric"></label><label><span class="input-icon verify" aria-hidden="true"></span><input placeholder="请输入验证码" inputmode="numeric"><button>获取验证码</button></label></div></div><button class="primary" data-page="ns">查询</button></section></div>`);
 }
 function otherNS(failed = false) {
-  return sourcePage('other', `<section class="card"><label class="field"><span class="input-icon url" aria-hidden="true"></span><input placeholder="请输入 Nightscout URL（网址）" value="${failed ? 'https://example.nightscout.app' : ''}"></label><label class="field"><span class="input-icon key" aria-hidden="true"></span><input placeholder="请输入 NS API 密钥" type="password" value="${failed ? 'demo-key' : ''}"></label>${failed ? '<p class="error">绑定失败，请检查 Nightscout 地址和密钥后重试。</p>' : ''}<button class="primary" data-page="other-bound">${failed ? '重新绑定' : '绑定'}</button></section>`);
+  return sourcePage('other', `<section class="card"><p class="form-summary">填写 Nightscout 地址和密钥</p><label class="field"><span class="input-icon url" aria-hidden="true"></span><input placeholder="请输入 Nightscout URL（网址）" value="${failed ? 'https://example.nightscout.app' : ''}"></label><label class="field"><span class="input-icon key" aria-hidden="true"></span><input placeholder="请输入 NS API 密钥" type="password" value="${failed ? 'demo-key' : ''}"></label>${failed ? '<p class="error">绑定失败，请检查 Nightscout 地址和密钥后重试。</p>' : ''}<button class="primary" data-page="other-bound">${failed ? '重新绑定' : '绑定'}</button></section>`);
 }
 function accountLogin() {
-  return sourcePage('account', '<section class="card account-login-card"><label class="field"><span class="input-icon phone" aria-hidden="true"></span><input placeholder="请输入手机号" inputmode="numeric"></label><label class="field"><span class="input-icon verify" aria-hidden="true"></span><input placeholder="请输入短信验证码" inputmode="numeric"><span class="code">获取验证码</span></label><button class="primary" data-page="sources">登录</button></section>');
+  return sourcePage('account', '<section class="card account-login-card"><p class="form-summary">登录糖糖圈账号</p><label class="field"><span class="input-icon phone" aria-hidden="true"></span><input placeholder="请输入手机号" inputmode="numeric"></label><label class="field"><span class="input-icon verify" aria-hidden="true"></span><input placeholder="请输入短信验证码" inputmode="numeric"><span class="code">获取验证码</span></label><button class="primary" data-page="sources">登录</button></section>');
 }
 function sourceRow(name) {
   return `<div class="select-row ${selectedSource === name ? 'selected' : ''}" data-source="${name}"><span class="source-icon">${name[0]}</span><div><h4>${name}</h4></div><i class="select-radio"></i></div>`;
@@ -57,7 +57,7 @@ function accountEmpty() {
   return sourcePage('account', '<section class="card empty"><div class="empty-icon">⌁</div><h3>暂未查询到可用血糖源</h3><p>若未在糖糖圈授权CGM，请先完成授权；<br>若您绑定的是NS，请选择“糖糖圈NS”或“其他NS”</p></section>', '已在糖糖圈绑定 CGM，登录后选择一个使用。');
 }
 function authorization() {
-  return sourcePage('auth', '<section class="card"><div class="source-row" data-page="silicon"><span class="source-icon">硅</span><div><h4>硅基动感</h4></div><span class="chevron">›</span></div><p class="hint" style="margin:18px 0 0">更多 CGM 正在接入中，敬请期待；<br>若已在糖糖圈绑定 CGM，可切换至「糖糖圈账号」登录后选择</p></section>');
+  return sourcePage('auth', '<section class="card"><p class="form-summary">选择需要绑定的 CGM</p><div class="source-row" data-page="silicon"><span class="source-icon">硅</span><div><h4>硅基动感</h4></div><span class="chevron">›</span></div><p class="hint" style="margin:18px 0 0">更多 CGM 正在接入中，敬请期待；<br>若已在糖糖圈绑定 CGM，可切换至「糖糖圈账号」登录后选择</p></section>');
 }
 function silicon() {
   const password = vendorMode.silicon === 'password';
