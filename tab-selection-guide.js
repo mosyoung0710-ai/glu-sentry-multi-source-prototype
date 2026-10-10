@@ -1,7 +1,7 @@
 const tabSelectionCopy = {
   ns: { subtitle: '输入手机号以查询NS账号', guide: '已通过糖糖圈开通 NS，选这里' },
   other: { subtitle: '填写 Nightscout 地址和密钥', guide: '已在其他渠道开通 NS，选这里' },
-  account: { subtitle: '已在糖糖圈绑定 CGM，登录后选择一个使用' },
+  account: { subtitle: '登录糖糖圈账号', guide: '已在糖糖圈绑定 CGM，登录后选择 1 个使用' },
   auth: { subtitle: '选择需要绑定的 CGM', guide: '想直接在糖哨兵绑定 CGM，选这里' }
 };
 
@@ -15,10 +15,11 @@ function renderTabSelectionGuide() {
 
   const card = document.querySelector('.card');
   const cardTitle = card?.querySelector('h3')?.textContent;
+  const isAccountLogin = card?.classList.contains('account-login-card');
   const subtitle = document.querySelector('.page-subtitle');
   const existingGuide = document.querySelector('.tab-guide');
 
-  if (tab === 'account' && cardTitle !== '登录糖糖圈账号') {
+  if (tab === 'account' && !isAccountLogin) {
     if (subtitle) subtitle.style.display = 'none';
     existingGuide?.remove();
 
