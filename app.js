@@ -83,7 +83,7 @@ function authorization() {
 }
 function silicon() {
   const password = vendorMode.silicon === 'password';
-  return phone(`${appNav('硅基动感授权')}<div class="vendor-content"><div class="vendor-banner">${changeBadge('1')}为了您的隐私安全，<br>请您登录硅基动感账号</div><div class="silicon-login"><h2>${changeBadge('2')}${password ? '账号密码登录' : '手机验证码登录'}</h2><p class="desc">${password ? '使用已注册的账号登录，账号默认为您注册的手机号' : '未注册的手机号将自动注册并登录'}</p><label class="vendor-field"><span class="input-icon phone" aria-hidden="true"></span><input placeholder="请输入手机号"></label>${password ? '<label class="vendor-field"><span class="input-icon lock" aria-hidden="true"></span><input placeholder="请输入密码" type="password"></label>' : '<label class="vendor-field"><span class="input-icon verify" aria-hidden="true"></span><input placeholder="请输入短信验证码"><span class="code">获取验证码</span></label>'}<button class="vendor-action" data-page="silicon-bound">${changeBadge('3')}登录</button><button class="vendor-switch" data-vendor="silicon">${password ? '手机验证码登录' : '账号密码登录'}</button></div></div>`, 'vendor');
+  return phone(`${appNav('硅基动感授权', true, 'auth', '4')}<div class="vendor-content"><div class="vendor-banner">${changeBadge('1')}为了您的隐私安全，<br>请您登录硅基动感账号</div><div class="silicon-login"><h2>${changeBadge('2')}${password ? '账号密码登录' : '手机验证码登录'}</h2><p class="desc">${password ? '使用已注册的账号登录，账号默认为您注册的手机号' : '未注册的手机号将自动注册并登录'}</p><label class="vendor-field"><span class="input-icon phone" aria-hidden="true"></span><input placeholder="请输入手机号"></label>${password ? '<label class="vendor-field"><span class="input-icon lock" aria-hidden="true"></span><input placeholder="请输入密码" type="password"></label>' : '<label class="vendor-field"><span class="input-icon verify" aria-hidden="true"></span><input placeholder="请输入短信验证码"><span class="code">获取验证码</span></label>'}<button class="vendor-action" data-page="silicon-bound">${changeBadge('3')}登录</button><button class="vendor-switch" data-vendor="silicon">${password ? '手机验证码登录' : '账号密码登录'}</button></div></div>`, 'vendor');
 }
 function flow() {
   return '<div class="flow-board"><h2>多种血糖源｜流程总览</h2><div class="flow-grid"><div class="flow-entry"><div class="flow-node">血糖源设置</div></div><div class="flow-arrow">→</div><div class="flow-col"><div class="flow-node">糖糖圈 NS</div><div class="flow-node">其他 NS</div><div class="flow-node">糖糖圈账号</div><div class="flow-node">绑定 CGM</div></div><div class="flow-arrow">→</div><div class="flow-col flow-operation"><div class="flow-node">输入手机号查询</div><div class="flow-node">填写网址和密钥</div><div class="flow-node">登录糖糖圈账号<br>选择 1 个 CGM</div><div class="flow-node">完成品牌授权</div></div><div class="flow-arrow">→</div><div class="flow-col flow-result"><div class="flow-node">已绑定</div><div class="flow-node">首页查看血糖数据</div></div></div></div>';
@@ -103,7 +103,7 @@ function view() {
     empty:['糖糖圈账号｜未查询到血糖源',accountEmpty(),'糖糖圈账号',['未查询到可用 CGM 时，分别提示未授权 CGM 和已绑定 NS 的处理方式','点击“切换糖糖圈账号”：返回血糖源设置页并定位至“糖糖圈账号”']],
     'account-bound':['糖糖圈账号｜已绑定 CGM',boundCGM(selectedSource,'account','1'),'糖糖圈账号',['点击“修改血糖源”后，返回血糖源设置页并定位至“糖糖圈账号”']],
     auth:['血糖源设置｜授权 CGM',authorization(),'绑定 CGM',['首期提供硅基动感绑定入口']],
-    silicon:['硅基动感授权',silicon(),'硅基动感',['选择硅基动感后，进入品牌授权页','本页交互与糖糖圈内的授权页面一致','登录成功后，返回硅基动感已绑定页']],
+    silicon:['硅基动感授权',silicon(),'硅基动感',['选择硅基动感后，进入品牌授权页','本页交互与糖糖圈内的授权页面一致','登录成功后，返回硅基动感已绑定页','点击左上角返回按钮后，返回血糖源设置页并定位至“绑定 CGM”']],
     'silicon-bound':['硅基动感｜已绑定',boundCGM('硅基动感','auth','1'),'硅基动感',['点击“修改血糖源”后，返回血糖源设置页并定位至“绑定 CGM”']]
   };
   const [title, content, noteTitle, noteText] = pages[active];
