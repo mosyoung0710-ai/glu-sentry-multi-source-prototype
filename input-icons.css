@@ -1,0 +1,16 @@
+.input-icon{position:relative;display:inline-block;flex:0 0 18px;width:18px;height:18px;margin-right:10px;color:currentColor}
+.input-icon.phone{width:15px;height:19px;margin-left:1px;border:1.6px solid currentColor;border-radius:3px}
+.input-icon.phone::after{content:"";position:absolute;bottom:2px;left:5px;width:3px;height:3px;border-radius:50%;background:currentColor}
+.input-icon.verify::before{content:"";position:absolute;inset:3px;border:1.5px solid currentColor;transform:rotate(45deg);border-radius:2px}
+.input-icon.verify::after{content:"";position:absolute;top:8px;left:8px;width:3px;height:3px;border-radius:50%;background:currentColor}
+.input-icon.url{border:1.5px solid currentColor;border-radius:50%}
+.input-icon.url::before,.input-icon.url::after{content:"";position:absolute;background:currentColor}
+.input-icon.url::before{top:7px;left:1px;width:14px;height:1px}
+.input-icon.url::after{top:1px;left:7px;width:1px;height:14px}
+.input-icon.key::before{content:"";position:absolute;top:3px;left:1px;width:7px;height:7px;border:1.5px solid currentColor;border-radius:50%}
+.input-icon.key::after{content:"";position:absolute;top:10px;left:8px;width:9px;height:2px;background:currentColor;box-shadow:5px 3px 0 -0.5px currentColor;transform:rotate(-45deg);transform-origin:left center}
+.input-icon.lock::before{content:"";position:absolute;top:7px;left:3px;width:12px;height:9px;border:1.5px solid currentColor;border-radius:2px}
+.input-icon.lock::after{content:"";position:absolute;top:1px;left:5px;width:8px;height:8px;border:1.5px solid currentColor;border-bottom:0;border-radius:7px 7px 0 0}
+.query-fields label{gap:0}
+.query-fields .input-icon{margin-right:10px;font-size:0}
+.line-field input{padding-left:0}
