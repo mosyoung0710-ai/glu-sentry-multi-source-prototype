@@ -36,7 +36,7 @@ function boundNS(url, modifyPage) {
   return phone(`${appNav('血糖源设置', false)}<div class="app-scroll"><section class="bound-ns"><div><h3>已绑定 NS</h3><p class="bound-label">NS网址</p><div class="bound-url"><span>◎</span><p>${url}</p></div><button class="text-action" data-page="${modifyPage}">修改血糖源</button></div><button class="primary">确定</button></section></div>`);
 }
 function boundCGM(name, modifyPage) {
-  return phone(`${appNav('血糖源设置', false)}<div class="app-scroll"><section class="bound-ns"><div><h3>已绑定 CGM</h3><p class="bound-label">血糖源</p><div class="bound-url"><span>◉</span><p>${name}</p></div><button class="text-action" data-page="${modifyPage}">修改血糖源</button></div><button class="primary">确定</button></section></div>`);
+  return phone(`${appNav('血糖源设置', false)}<div class="app-scroll"><section class="bound-ns bound-cgm"><div><h3>已绑定 CGM</h3><div class="bound-url"><span>◉</span><p>${name}</p></div><button class="text-action" data-page="${modifyPage}">修改血糖源</button></div><button class="primary">确定</button></section></div>`);
 }
 function nsEdit() {
   return phone(`${appNav('血糖源设置')}<div class="app-scroll"><section class="ttq-ns-query"><div><h1 class="page-title">血糖源设置</h1><p class="page-subtitle">已通过糖糖圈开通 NS，输入手机号查询。</p>${tabs('ns')}<div class="query-fields"><label><span class="input-icon phone" aria-hidden="true"></span><input placeholder="请输入手机号" inputmode="numeric"></label><label><span class="input-icon verify" aria-hidden="true"></span><input placeholder="请输入验证码" inputmode="numeric"><button>获取验证码</button></label></div></div><button class="primary" data-page="ns">查询</button></section></div>`);
