@@ -1,1 +1,6 @@
 .success{height:calc(100% - 81px)}
+.flow-grid{grid-template-columns:.8fr 26px 1fr 26px 1.25fr 26px 1fr}
+.flow-entry{display:grid;align-self:center}
+.flow-grid>.flow-col:not(.flow-result){grid-template-rows:repeat(4,52px)}
+.flow-operation .flow-node{display:grid;place-items:center;line-height:1.35;padding:8px}
+.flow-result{align-self:center}
