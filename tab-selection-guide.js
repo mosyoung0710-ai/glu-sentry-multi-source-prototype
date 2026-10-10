@@ -1,6 +1,6 @@
 const tabSelectionCopy = {
   ns: { subtitle: '', guide: '已通过糖糖圈开通 NS，选这里' },
-  'ns-edit': { subtitle: '', guide: '已通过糖糖圈开通 NS，选这里' },
+  'ns-edit': { subtitle: '', guide: '已通过糖糖圈开通 NS，选这里', guideMark: '2' },
   other: { subtitle: '', guide: '已在其他渠道开通 NS，选这里' },
   account: { subtitle: '', guide: '已在糖糖圈绑定 CGM，选这里' },
   auth: { subtitle: '', guide: '想直接在糖哨兵绑定 CGM，选这里' }
@@ -28,7 +28,7 @@ function renderTabSelectionGuide() {
       card.classList.add('source-choice-card');
       card.querySelector('h3')?.remove();
       const hint = card.querySelector('.hint');
-      if (hint) hint.textContent = '已查询到 2 个 CGM，请选择 1 个';
+      if (hint) hint.innerHTML = '<span class="change-dot">1</span>已查询到 2 个 CGM，请选择 1 个';
     }
     return;
   }
@@ -49,9 +49,10 @@ function renderTabSelectionGuide() {
 
   if (existingGuide?.dataset.tab === tab) return;
   existingGuide?.remove();
+  const guideMark = document.querySelector('.query-result') ? '1' : copy.guideMark;
   selectedTab.closest('.tabs')?.insertAdjacentHTML(
     'afterend',
-    `<p class="tab-guide" data-tab="${tab}">${copy.guide}</p>`
+    `<p class="tab-guide" data-tab="${tab}">${guideMark ? `<span class="change-dot">${guideMark}</span>` : ''}${copy.guide}</p>`
   );
 }
 
