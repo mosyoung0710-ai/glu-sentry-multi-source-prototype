@@ -1,2 +1,9 @@
 .tab-guide{margin:-7px 1px 16px;color:#78869a;font-size:13px;line-height:1.45}.card .form-summary{margin:0 0 14px;color:#78869a;font-size:13px;line-height:1.45}.change-dot{display:inline-grid;place-items:center;width:16px;height:16px;margin-right:6px;border-radius:50%;background:#4387e8;color:#fff;font-size:10px;font-weight:700;line-height:1;vertical-align:-2px}.tabs{position:relative}.tab-change-dot{position:absolute;top:-7px;left:-7px;z-index:2;margin:0}.note-list{margin:0;padding:0;list-style:none;color:#4a5567;font-size:13px;line-height:1.75}.note-list li+li{margin-top:6px}.source-choice-card{padding-top:22px}.source-choice-card .hint{margin:0 0 15px;color:#20242d;font-size:16px;font-weight:700;line-height:1.5}.source-choice-card .select-row h4{margin:0;font-size:15px}
 .back .change-dot{margin:0 0 0 3px;vertical-align:4px}
+.bound-account h3 .change-dot{margin-right:7px}
+.account-display-setting{margin-top:22px;padding-top:18px;border-top:1px solid #edf0f4}
+.display-status{margin:0;color:#3e4857;font-size:14px}
+.display-hint{margin:12px 0 0;color:#8994a4;font-size:13px;line-height:1.55}
+.inline-action{margin:0;padding:0;border:0;background:transparent;color:#ff982b;font:inherit;cursor:pointer;white-space:nowrap}
+.account-source-action{margin-top:2px}
+.account-display-chooser .select-row{margin-top:12px}

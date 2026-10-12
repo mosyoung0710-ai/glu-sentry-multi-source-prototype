@@ -3,7 +3,7 @@ const tabSelectionCopy = {
   'ns-edit': { subtitle: '', guide: '已通过糖糖圈开通 NS，选这里', guideMark: '2' },
   other: { subtitle: '', guide: '已在其他渠道开通 NS，选这里' },
   account: { subtitle: '', guide: '已在糖糖圈绑定 CGM，选这里' },
-  auth: { subtitle: '', guide: '想直接在糖哨兵绑定 CGM，选这里' }
+  auth: { subtitle: '', guide: '想直接在糖哨兵授权CGM，选这里' }
 };
 
 function renderTabSelectionGuide() {
